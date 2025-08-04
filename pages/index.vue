@@ -1,32 +1,6 @@
 <template>
   <div>
-    <header>
-      <div class="container">
-        <div class="logo">海南积分宝电子商务有限公司</div>
-        <div class="expand" @click="switchIsshow"><img src="../static/展开菜单.png" alt=""
-            style="width: 40px; height: 100%;"></div>
-        <nav class="desktop-nav">
-          <a href="#about" class="nav-link">项目背景</a>
-          <a href="#services" class="nav-link">核心功能</a>
-          <a href="#advantage" class="nav-link">投资优势</a>
-          <a href="#scene" class="nav-link">应用场景</a>
-          <a href="#process" class="nav-link">合作流程</a>
-          <a href="#service" class="nav-link">提供服务</a>
-        </nav>
-      </div>
-
-      <div v-show="isShow" class="expandList" :style="{ opacity: elementTagOpacity }">
-        <nav>
-          <a href="#about" class="nav-link">项目背景</a>
-          <a href="#services" class="nav-link">核心功能</a>
-          <a href="#advantage" class="nav-link">投资优势</a>
-          <a href="#scene" class="nav-link">应用场景</a>
-          <a href="#process" class="nav-link">合作流程</a>
-          <a href="#service" class="nav-link">提供服务</a>
-        </nav>
-      </div>
-    </header>
-
+    <headerVue></headerVue>
     <section class="hero-section">
       <div class="hero-bg">
         <img src="../static/background.jpg" alt="智慧农贸平台展示" class="hero-image">
@@ -36,7 +10,7 @@
         <h1 class="hero-title">智慧农贸<br>乡村振兴</h1>
         <p class="hero-subtitle">海南积分宝农贸市场数字化转型平台，连接农户与市场，构建全国统一大市场</p>
         <div class="hero-actions">
-          <a class="btn-primary" href="/cooperate">成为代理</a>
+          <a class="btn-primary" href="/cooperate" target="_blank">成为代理</a>
           <a href="#services" class="btn-secondary">了解功能</a>
         </div>
       </div>
@@ -58,7 +32,9 @@
             <div style="font-weight: bold; font-size: 20px;">公司简介:</div>
             <div>
               <p style="text-indent: 20px;">集积分运营、电子商务、应用软件技术于一体的复合型公司
-                海南积分宝电子商务有限公司, 于2011年3月30日在海口成立，注册资金1000万人民币，是一家集积分运营、电子商务、应用软件技术于一体的复合型公司，致力于消费养老、企业咨询管理、文化传播推广与运营等。
+                海南积分宝电子商务有限公司,
+                于2011年3月30日在海口成立，注册资金1000万人民币，是一家集积分运营、电子商务、应用软件技术于一体的复合型公司，致力于<a href="#">消费养老</a>、<a
+                  href="#">企业咨询管理</a>、<a href="#">文化传播推广与运营</a>等。
               </p>
             </div>
           </div>
@@ -123,12 +99,12 @@
 
             <h3 class="about-title">行业痛点</h3>
             <p class="about-paragraph">
-              传统农贸市场存在信息不对称（中间商差价占比30%）、供应链冗长（流通损耗率25%）、溯源困难（食品安全投诉年增25%）等问题。全国1.2万个农贸市场中90%亟待数字化改造，小农户面临"卖货难"，消费者缺乏信任，市场管理效率低下。
+              传统农贸市场存在信息不对称（中间商差价占比30%）、供应链冗长（流通损耗率25%）、溯源困难（食品安全投诉年增25%）等问题。全国1.2万个农贸市场中90%待数字化改造，小农户面临"卖货难"，消费者缺乏信任，市场管理效率低下。
             </p>
 
             <h3 class="about-title">项目必要性</h3>
             <p class="about-paragraph">
-              本项目直接契合国家及海南省关于智慧农贸、数字乡村、统一大市场建设的战略方向，能够解决行业痛点，保障食品安全，赋能乡村振兴，探索创新模式。
+              本项目<a href="#">"农链天下"</a>直接契合国家及海南省关于智慧农贸、数字乡村、统一大市场建设的战略方向，能够解决行业痛点，保障食品安全，赋能乡村振兴，探索创新模式。
             </p>
 
             <h3 class="about-title">市场机遇</h3>
@@ -139,7 +115,11 @@
 
           <div class="market-potential">
             <div class="potential-chart">
-              <v-chart class="chart" :option="option" />
+              <ClientOnly>
+                <!-- <v-chart class="chart" :option="option" /> -->
+                <!-- 动态导入组件 -->
+                <component :is="chartComponent" :option="option" />
+              </ClientOnly>
             </div>
             <div class="potential-stats">
               <div class="stat-item">
@@ -326,6 +306,8 @@
           <p class="section-subtitle">六步轻松合作，开启财富之旅</p>
         </div>
 
+
+
         <div class="process-steps">
           <div class="step-item">
             <div class="step-number">1</div>
@@ -466,7 +448,8 @@
 
 
           <div class="footer-col">
-            <button style="color: black; padding: 20px; font-size: 20px; "><a href="/cooperate">我要成为代理</a></button>
+            <button style="color: black; padding: 20px; font-size: 20px; "><a href="/cooperate"
+                target="_blank">我要成为代理</a></button>
           </div>
 
           <div class="footer-col">
@@ -474,7 +457,7 @@
             <ul class="footer-contacts">
               <li class="footer-contact">
                 <i class="fa fa-map-marker"></i>
-                <span>海南省海口市龙华区国贸大道1号</span>
+                <span>海南省海口市秀英区海盛路35号</span>
               </li>
               <li class="footer-contact">
                 <i class="fa fa-phone"></i>
@@ -510,14 +493,15 @@ import { use } from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 import { LabelLayout } from 'echarts/features';
 import { PieChart, LineChart } from 'echarts/charts';
+import headerVue from '../components/headers.vue'
 import {
   TitleComponent,
   TooltipComponent,
   LegendComponent,
 } from 'echarts/components';
-import VChart, { THEME_KEY } from 'vue-echarts';
-import { ref, defineComponent } from 'vue';
+// import VChart, { THEME_KEY } from 'vue-echarts';
 
+import { ref, onMounted } from 'vue';
 
 use([
   CanvasRenderer,
@@ -529,21 +513,24 @@ use([
   LineChart
 ]);
 
-const isShow = ref(false)
-const elementTagOpacity = ref(0)
 
-const switchIsshow = () => {
-  isShow.value = !isShow.value
-  elementTagOpacity.value = isShow.value ? 1 : 0
-}
 
-window.addEventListener('resize', () => {
-  console.log(window.innerWidth)
-  if (window.innerWidth > 840) {
-    isShow.value = false
-    elementTagOpacity.value = 0
-  }
+
+const chartComponent = ref(null)
+onMounted(async () => {
+  // 动态导入组件
+  const { default: VChart } = await import('vue-echarts')
+  chartComponent.value = VChart
+
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 840) {
+      isShow.value = false
+      elementTagOpacity.value = 0
+    }
+  })
 })
+
 
 
 const option = ref({
@@ -601,7 +588,7 @@ const option2 = ref({
 })
 </script>
 
-<style>
+<style scoped>
 /* ===== 全局样式与重置 ===== */
 :root {
   --primary: #2274df;
@@ -699,23 +686,12 @@ body {
   margin-top: 50px;
 }
 
-.process-steps::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #e0e0e0;
-  transform: translateY(-50%);
-  z-index: 1;
-}
+
 
 .step-item {
   position: relative;
   z-index: 2;
   text-align: center;
-  width: 16.66%;
 }
 
 .step-number {
@@ -733,6 +709,7 @@ body {
   border: 3px solid white;
   box-shadow: 0 0 0 2px var(--primary);
 }
+
 
 .step-content {
   background: white;
@@ -897,23 +874,6 @@ body {
   height: 100%;
 }
 
-.expand {
-  display: none;
-}
-
-.expandList {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-
-.expandList nav {
-  display: flex;
-  justify-content: space-between;
-  margin: 10px;
-  transition: margin 0.5s;
-  flex-wrap: wrap;
-}
 
 
 img {
@@ -933,61 +893,9 @@ li {
   padding: 0 10px;
 }
 
-header {
-  position: fixed;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  transition: var(--transition);
-}
 
 
 
-header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 0;
-}
-
-.logo {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--primary);
-}
-
-.desktop-nav {
-  display: flex;
-  gap: 30px;
-}
-
-.nav-link {
-  text-decoration: none;
-  color: var(--dark);
-  font-weight: 500;
-  transition: color 0.3s;
-  position: relative;
-}
-
-.nav-link:hover {
-  color: var(--primary);
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--primary);
-  transition: width 0.3s;
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
 
 
 
@@ -1067,7 +975,7 @@ header .container {
 .btn-primary {
   border-radius: 5px;
   padding: 10px;
-  background: var(--primary);
+  background-color: #2274df;
   color: white;
 }
 
@@ -1082,26 +990,6 @@ header .container {
 }
 
 
-
-
-@keyframes bounce {
-
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-
-  40% {
-    transform: translateY(-20px);
-  }
-
-  60% {
-    transform: translateY(-10px);
-  }
-}
 
 section {
   padding: 100px 0;
@@ -1196,8 +1084,6 @@ section {
 
 
 
-
-
 .service-title {
   margin: 10px;
   font-size: 1.5rem;
@@ -1216,6 +1102,31 @@ section {
 /* ===== 响应式设计 ===== */
 @media (max-width: 992px) {
 
+  .process-steps {
+    display: block;
+  }
+
+  .step-item {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+  }
+
+  .step-number {
+    width: 60px;
+    height: 60px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 10px 0 0;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--primary);
+  }
 
   /* 平板设备  */
   .hero-title {
@@ -1244,6 +1155,33 @@ section {
     display: none;
   }
 
+  .process-steps {
+    display: block;
+  }
+
+
+
+  .step-item {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+  }
+
+  .step-number {
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 10px 0 0;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--primary);
+  }
 
 
 
@@ -1278,11 +1216,35 @@ section {
     font-size: 30px;
     display: inline-block;
   }
-
-
 }
 
 @media (max-width: 480px) {
+  .process-steps {
+    display: block;
+  }
+
+  .step-item {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+  }
+
+  .step-number {
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 10px 0 0;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--primary);
+  }
+
   .expand {
     line-height: 50%;
     margin-right: 10px;

@@ -1,31 +1,64 @@
 const client_manifest = {
-  "_6NLson1X.js": {
+  "_C29AabMs.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "6NLson1X.js",
+    "file": "C29AabMs.js",
     "name": "v3",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js"
     ]
+  },
+  "_CPNe3w_v.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "CPNe3w_v.js",
+    "name": "shopping"
+  },
+  "_DZDP7t-A.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "DZDP7t-A.js",
+    "name": "headers",
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.js"
+    ],
+    "css": [
+      "headers.Bkvuk2N_.css"
+    ]
+  },
+  "headers.Bkvuk2N_.css": {
+    "file": "headers.Bkvuk2N_.css",
+    "resourceType": "style",
+    "prefetch": true,
+    "preload": true
+  },
+  "_headers.Bkvuk2N_.css": {
+    "resourceType": "style",
+    "prefetch": true,
+    "preload": true,
+    "file": "headers.Bkvuk2N_.css",
+    "src": "_headers.Bkvuk2N_.css"
   },
   "node_modules/nuxt/dist/app/components/error-404.vue": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "D5fSyZJY.js",
+    "file": "CPL4gYIv.js",
     "name": "error-404",
     "src": "node_modules/nuxt/dist/app/components/error-404.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_6NLson1X.js"
+      "_C29AabMs.js"
     ],
-    "css": [
-      "error-404.4oxyXxx0.css"
-    ]
+    "css": []
   },
   "error-404.4oxyXxx0.css": {
     "file": "error-404.4oxyXxx0.css",
@@ -38,17 +71,15 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "C1iPWMoz.js",
+    "file": "DcmV31qk.js",
     "name": "error-500",
     "src": "node_modules/nuxt/dist/app/components/error-500.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_6NLson1X.js"
+      "_C29AabMs.js"
     ],
-    "css": [
-      "error-500.CZqNkBuR.css"
-    ]
+    "css": []
   },
   "error-500.CZqNkBuR.css": {
     "file": "error-500.CZqNkBuR.css",
@@ -61,7 +92,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DB_y8LoP.js",
+    "file": "BiE1HxiP.js",
     "name": "entry",
     "src": "node_modules/nuxt/dist/app/entry.js",
     "isEntry": true,
@@ -70,24 +101,55 @@ const client_manifest = {
       "node_modules/nuxt/dist/app/components/error-500.vue"
     ]
   },
+  "node_modules/vue-echarts/dist/index.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "DmaF0UtU.js",
+    "name": "index",
+    "src": "node_modules/vue-echarts/dist/index.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.js"
+    ]
+  },
   "pages/cooperate.vue": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "e9rstEQt.js",
+    "file": "CWaBnS7p.js",
     "name": "cooperate",
     "src": "pages/cooperate.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js"
     ],
-    "css": [
-      "demo.BwUb3U7a.css"
-    ]
+    "css": []
   },
-  "demo.BwUb3U7a.css": {
-    "file": "demo.BwUb3U7a.css",
+  "cooperate.BM_j-aAR.css": {
+    "file": "cooperate.BM_j-aAR.css",
+    "resourceType": "style",
+    "prefetch": true,
+    "preload": true
+  },
+  "pages/cooperationAgreement.vue": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "Cco4Vo78.js",
+    "name": "cooperationAgreement",
+    "src": "pages/cooperationAgreement.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.js"
+    ],
+    "css": []
+  },
+  "cooperationAgreement.Bs2mlayZ.css": {
+    "file": "cooperationAgreement.Bs2mlayZ.css",
     "resourceType": "style",
     "prefetch": true,
     "preload": true
@@ -97,15 +159,14 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DXfHfp98.js",
+    "file": "xteGiEyj.js",
     "name": "demo",
     "src": "pages/demo.vue",
     "isDynamicEntry": true,
     "imports": [
+      "_CPNe3w_v.js",
+      "_DZDP7t-A.js",
       "node_modules/nuxt/dist/app/entry.js"
-    ],
-    "css": [
-      "demo.BwUb3U7a.css"
     ]
   },
   "pages/index.vue": {
@@ -113,16 +174,18 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "nixdlt-X.js",
+    "file": "BDDiy2E-.js",
     "name": "index",
     "src": "pages/index.vue",
     "isDynamicEntry": true,
     "imports": [
-      "node_modules/nuxt/dist/app/entry.js"
+      "node_modules/nuxt/dist/app/entry.js",
+      "_DZDP7t-A.js"
     ],
-    "css": [
-      "index.DMP8XRMx.css"
+    "dynamicImports": [
+      "node_modules/vue-echarts/dist/index.js"
     ],
+    "css": [],
     "assets": [
       "background.CFCqv-xq.jpg",
       "one.D83YXHE8.png",
@@ -138,8 +201,8 @@ const client_manifest = {
       "zengzhi.ChF9e4GV.png"
     ]
   },
-  "index.DMP8XRMx.css": {
-    "file": "index.DMP8XRMx.css",
+  "index.DfG5uj6q.css": {
+    "file": "index.DfG5uj6q.css",
     "resourceType": "style",
     "prefetch": true,
     "preload": true
@@ -215,6 +278,28 @@ const client_manifest = {
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png"
+  },
+  "pages/shoppingPc.vue": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "Dyzo-ok8.js",
+    "name": "shoppingPc",
+    "src": "pages/shoppingPc.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_CPNe3w_v.js",
+      "_DZDP7t-A.js",
+      "node_modules/nuxt/dist/app/entry.js"
+    ],
+    "css": []
+  },
+  "shoppingPc.D_61I_Lj.css": {
+    "file": "shoppingPc.D_61I_Lj.css",
+    "resourceType": "style",
+    "prefetch": true,
+    "preload": true
   },
   "static/background.jpg": {
     "resourceType": "image",
