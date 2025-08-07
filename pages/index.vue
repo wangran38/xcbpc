@@ -437,54 +437,7 @@
 
 
 
-    <footer class="footer" id="contact">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-col">
-            <h3 class="footer-title">海南积分宝电子商务有限公司</h3>
-            <p class="footer-text">农贸市场数字化转型平台，连接农户与市场，助力乡村振兴，保障食品安全。</p>
-
-          </div>
-
-
-          <div class="footer-col">
-            <button style="color: black; padding: 20px; font-size: 20px; "><a href="/cooperate"
-                target="_blank">我要成为代理</a></button>
-          </div>
-
-          <div class="footer-col">
-            <h3 class="footer-title">联系方式</h3>
-            <ul class="footer-contacts">
-              <li class="footer-contact">
-                <i class="fa fa-map-marker"></i>
-                <span>海南省海口市秀英区海盛路35号</span>
-              </li>
-              <li class="footer-contact">
-                <i class="fa fa-phone"></i>
-                <span>+86 68552337</span>
-              </li>
-              <li class="footer-contact">
-                <i class="fa fa-envelope"></i>
-                <span>wangrantian@qq.com</span>
-              </li>
-              <li class="footer-contact">
-                <i class="fa fa-clock-o"></i>
-                <span>周一至周五: 8:00 - 18:00</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p hr class="footer-copyright">工信部ICP备案号:<a href="https://beian.miit.gov.cn/"
-              target="_blank">琼ICP备2024041928号</a></p>
-          <p class="footer-copyright">© 2025 海南积分宝电子商务有限公司. 保留所有权利。</p>
-
-        </div>
-
-
-      </div>
-    </footer>
+    <footerVue></footerVue>
   </div>
 </template>
 
@@ -494,6 +447,7 @@ import { CanvasRenderer } from 'echarts/renderers';
 import { LabelLayout } from 'echarts/features';
 import { PieChart, LineChart } from 'echarts/charts';
 import headerVue from '../components/headers.vue'
+import footerVue from '../components/footers.vue'
 import {
   TitleComponent,
   TooltipComponent,
@@ -1290,92 +1244,10 @@ section {
   }
 }
 
-.footer {
-  background-color: #1e293b;
-  color: #e2e8f0;
-  padding: 4rem 0;
-}
 
 .container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 1.5rem;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 3rem;
-}
-
-@media (min-width: 640px) {
-  .footer-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 1024px) {
-  .footer-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-.footer-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  color: #ffffff;
-}
-
-.footer-text {
-  line-height: 1.75;
-  margin-bottom: 1.5rem;
-}
-
-
-
-
-
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.footer-link {
-  color: #cbd5e1;
-  transition: color 0.3s ease;
-}
-
-.footer-link:hover {
-  color: #3b82f6;
-}
-
-.footer-contacts {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.footer-contact {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-}
-
-.footer-contact i {
-  margin-top: 0.25rem;
-  color: #3b82f6;
-}
-
-.footer-bottom {
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-copyright {
-  text-align: center;
-  color: #94a3b8;
 }
 </style>

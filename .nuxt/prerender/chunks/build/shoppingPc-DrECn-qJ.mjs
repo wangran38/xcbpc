@@ -1,7 +1,8 @@
 import { s as shopList, m as marketlist, c as citytree, a as citylist } from './shopping-zUGkHwhX.mjs';
 import { h as headerVue } from './headers-1TclwoUg.mjs';
+import { f as footerVue } from './footers-Meyi8Bn5.mjs';
 import { resolveComponent, mergeProps, useSSRContext } from 'file://E:/%E6%B5%B7%E5%8D%97%E7%A7%AF%E5%88%86%E5%AE%9D%E5%85%AC%E5%8F%B8%E5%AE%98%E7%BD%91%E5%BB%BA%E8%AE%BE/CompanyOfficialWebsite/node_modules/vue/index.mjs';
-import { ssrRenderAttrs, ssrRenderComponent, ssrRenderList, ssrRenderAttr, ssrInterpolate, ssrIncludeBooleanAttr, ssrLooseContain, ssrLooseEqual, ssrRenderClass, ssrRenderStyle } from 'file://E:/%E6%B5%B7%E5%8D%97%E7%A7%AF%E5%88%86%E5%AE%9D%E5%85%AC%E5%8F%B8%E5%AE%98%E7%BD%91%E5%BB%BA%E8%AE%BE/CompanyOfficialWebsite/node_modules/vue/server-renderer/index.mjs';
+import { ssrRenderAttrs, ssrRenderComponent, ssrRenderList, ssrRenderAttr, ssrInterpolate, ssrIncludeBooleanAttr, ssrLooseContain, ssrLooseEqual, ssrRenderClass } from 'file://E:/%E6%B5%B7%E5%8D%97%E7%A7%AF%E5%88%86%E5%AE%9D%E5%85%AC%E5%8F%B8%E5%AE%98%E7%BD%91%E5%BB%BA%E8%AE%BE/CompanyOfficialWebsite/node_modules/vue/server-renderer/index.mjs';
 import { _ as _export_sfc } from './server.mjs';
 import 'file://E:/%E6%B5%B7%E5%8D%97%E7%A7%AF%E5%88%86%E5%AE%9D%E5%85%AC%E5%8F%B8%E5%AE%98%E7%BD%91%E5%BB%BA%E8%AE%BE/CompanyOfficialWebsite/node_modules/axios/index.js';
 import 'file://E:/%E6%B5%B7%E5%8D%97%E7%A7%AF%E5%88%86%E5%AE%9D%E5%85%AC%E5%8F%B8%E5%AE%98%E7%BD%91%E5%BB%BA%E8%AE%BE/CompanyOfficialWebsite/node_modules/ofetch/dist/node.mjs';
@@ -97,7 +98,8 @@ const _sfc_main = {
     };
   },
   components: {
-    headerVue
+    headerVue,
+    footerVue
   },
   async mounted() {
     (void 0).addEventListener("resize", () => {
@@ -188,6 +190,7 @@ const _sfc_main = {
 };
 function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_headerVue = resolveComponent("headerVue");
+  const _component_footerVue = resolveComponent("footerVue");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "shops-page" }, _attrs))}>`);
   _push(ssrRenderComponent(_component_headerVue, null, null, _parent));
   _push(`<section class="page-title-section"><div class="container"><h2>\u5408\u4F5C\u5E97\u94FA\u5C55\u793A</h2><p>\u7CBE\u9009\u4F18\u8D28\u519C\u4EA7\u54C1\u5546\u6237\uFF0C\u6E90\u5934\u76F4\u4F9B\uFF0C\u54C1\u8D28\u4FDD\u969C</p></div></section><section class="filter-section"><div class="container"><div class="filter-content"><div class="filter-options"><div class="filter-group"><label>\u7701:</label><select><!--[-->`);
@@ -230,7 +233,9 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
   } else {
     _push(`<!---->`);
   }
-  _push(`<div class="pagination"><button class="page-btn prev"${ssrIncludeBooleanAttr($data.query.page == 1) ? " disabled" : ""}> \u4E0A\u4E00\u9875 </button><button class="page-btn next"${ssrIncludeBooleanAttr($data.shops.length < $data.query.limit) ? " disabled" : ""}> \u4E0B\u4E00\u9875 </button></div></div></section><footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-col"><h3 class="footer-title">\u6D77\u5357\u79EF\u5206\u5B9D\u7535\u5B50\u5546\u52A1\u6709\u9650\u516C\u53F8</h3><p class="footer-text">\u519C\u8D38\u5E02\u573A\u6570\u5B57\u5316\u8F6C\u578B\u5E73\u53F0\uFF0C\u8FDE\u63A5\u519C\u6237\u4E0E\u5E02\u573A\uFF0C\u52A9\u529B\u4E61\u6751\u632F\u5174\uFF0C\u4FDD\u969C\u98DF\u54C1\u5B89\u5168\u3002</p></div><div class="footer-col"><button style="${ssrRenderStyle({ "color": "black", "padding": "20px", "font-size": "20px" })}"><a href="/cooperate" target="_blank">\u6211\u8981\u6210\u4E3A\u4EE3\u7406</a></button></div><div class="footer-col"><h3 class="footer-title">\u8054\u7CFB\u65B9\u5F0F</h3><ul class="footer-contacts"><li class="footer-contact"><i class="fa fa-map-marker"></i><span>\u6D77\u5357\u7701\u6D77\u53E3\u5E02\u9F99\u534E\u533A\u56FD\u8D38\u5927\u90531\u53F7</span></li><li class="footer-contact"><i class="fa fa-phone"></i><span>+86 68552337</span></li><li class="footer-contact"><i class="fa fa-envelope"></i><span>wangrantian@qq.com</span></li><li class="footer-contact"><i class="fa fa-clock-o"></i><span>\u5468\u4E00\u81F3\u5468\u4E94: 8:00 - 18:00</span></li></ul></div></div><div class="footer-bottom"><p hr class="footer-copyright">\u5DE5\u4FE1\u90E8ICP\u5907\u6848\u53F7:<a href="https://beian.miit.gov.cn/" target="_blank">\u743CICP\u59072024041928\u53F7</a></p><p class="footer-copyright">\xA9 2025 \u6D77\u5357\u79EF\u5206\u5B9D\u7535\u5B50\u5546\u52A1\u6709\u9650\u516C\u53F8. \u4FDD\u7559\u6240\u6709\u6743\u5229\u3002</p></div></div></footer></div>`);
+  _push(`<div class="pagination"><button class="page-btn prev"${ssrIncludeBooleanAttr($data.query.page == 1) ? " disabled" : ""}> \u4E0A\u4E00\u9875 </button><button class="page-btn next"${ssrIncludeBooleanAttr($data.shops.length < $data.query.limit) ? " disabled" : ""}> \u4E0B\u4E00\u9875 </button></div></div></section>`);
+  _push(ssrRenderComponent(_component_footerVue, null, null, _parent));
+  _push(`</div>`);
 }
 const _sfc_setup = _sfc_main.setup;
 _sfc_main.setup = (props, ctx) => {
@@ -241,4 +246,4 @@ _sfc_main.setup = (props, ctx) => {
 const shoppingPc = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
 
 export { shoppingPc as default };
-//# sourceMappingURL=shoppingPc-BAZdAiTm.mjs.map
+//# sourceMappingURL=shoppingPc-DrECn-qJ.mjs.map

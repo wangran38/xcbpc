@@ -450,7 +450,7 @@ const _routes = [
   {
     name: "index",
     path: "/",
-    component: () => import('./index-kzq43Dv4.mjs')
+    component: () => import('./index-ZPsco3kQ.mjs')
   },
   {
     name: "cooperate",
@@ -460,7 +460,7 @@ const _routes = [
   {
     name: "shoppingPc",
     path: "/shoppingPc",
-    component: () => import('./shoppingPc-BAZdAiTm.mjs')
+    component: () => import('./shoppingPc-DrECn-qJ.mjs')
   },
   {
     name: "cooperationAgreement",

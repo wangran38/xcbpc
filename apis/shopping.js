@@ -21,6 +21,17 @@ export const marketlist = (data) => {
 
 // 获取摊主列表
 export const shopList = (data) => {
-    return request('api/shop/list', 'POST', data)
+    return request('/api/shop/list', 'POST', data)
 }
 
+
+// 获取菜品列表
+export const getShopGoods = (data) => {
+    return request('/api/market/commodity/list', 'POST', data)
+}
+
+
+// 获取评论列表
+export const getShopComments = (data) => {
+    return request('api/shop/list', 'POST', data)
+}

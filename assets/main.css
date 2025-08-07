@@ -1,0 +1,17 @@
+/* 针对WebKit内核浏览器（Chrome、Safari） */
+.element::-webkit-scrollbar {
+    display: none;
+    /* 隐藏滚动条 */
+}
+
+/* 针对IE、Edge */
+.element {
+    -ms-overflow-style: none;
+    /* 隐藏滚动条 */
+}
+
+/* 针对Firefox */
+.element {
+    scrollbar-width: none;
+    /* 隐藏滚动条 */
+}

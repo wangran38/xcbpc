@@ -110,7 +110,7 @@
                         </div>
 
                         <div class="shop-actions">
-                            <button class="enter-btn">查看店铺</button>
+                            <button class="enter-btn" @click="viewDetails(shop)">查看店铺</button>
 
                         </div>
                     </div>
@@ -133,69 +133,21 @@
                 </div>
             </div>
         </section>
-
-
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-col">
-                        <h3 class="footer-title">海南积分宝电子商务有限公司</h3>
-                        <p class="footer-text">农贸市场数字化转型平台，连接农户与市场，助力乡村振兴，保障食品安全。</p>
-
-                    </div>
-
-
-                    <div class="footer-col">
-                        <button style="color: black; padding: 20px; font-size: 20px; "><a href="/cooperate"
-                                target="_blank">我要成为代理</a></button>
-                    </div>
-
-                    <div class="footer-col">
-                        <h3 class="footer-title">联系方式</h3>
-                        <ul class="footer-contacts">
-                            <li class="footer-contact">
-                                <i class="fa fa-map-marker"></i>
-                                <span>海南省海口市秀英区海盛路35号</span>
-                            </li>
-                            <li class="footer-contact">
-                                <i class="fa fa-phone"></i>
-                                <span>+86 68552337</span>
-                            </li>
-                            <li class="footer-contact">
-                                <i class="fa fa-envelope"></i>
-                                <span>wangrantian@qq.com</span>
-                            </li>
-                            <li class="footer-contact">
-                                <i class="fa fa-clock-o"></i>
-                                <span>周一至周五: 8:00 - 18:00</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="footer-bottom">
-                    <p hr class="footer-copyright">工信部ICP备案号:<a href="https://beian.miit.gov.cn/"
-                            target="_blank">琼ICP备2024041928号</a></p>
-                    <p class="footer-copyright">© 2025 海南积分宝电子商务有限公司. 保留所有权利。</p>
-
-                </div>
-
-
-            </div>
-        </footer>
+        <footerVue></footerVue>
     </div>
 </template>
 
 <script>
 import { citylist, citytree, marketlist, shopList } from '../apis/shopping'
 import headerVue from '../components/headers.vue'
+import footerVue from '../components/footers.vue'
 export default {
     data() {
         return {
             selectFoodMarket: null,
             selectCounty: null,
-            selecteEconomize: 1,
-            selecteMarket: 0,
+            selecteEconomize: null, // 省
+            selecteMarket: 2306,  // 市
             foodMarket: [], // 菜市场 
             county: [], // 市县
             market: [], // 市
@@ -205,11 +157,13 @@ export default {
             shops: [],
             timer: null,
             isShow: false,
-            elementTagOpacity: 0
+            elementTagOpacity: 0,
+            isInit: true,
         };
     },
     components: {
-        headerVue
+        headerVue,
+        footerVue
     },
     async mounted() {
         window.addEventListener('resize', () => {
@@ -221,6 +175,27 @@ export default {
         this.initsSelectArea()
     },
     methods: {
+        async initSelect() {
+            this.selecteEconomize = 2291
+            this.filterShops(1)
+            setTimeout(() => {
+                this.selecteMarket = 2306
+                this.filterShops(2)
+                setTimeout(() => {
+                    this.selectCounty = 2313
+                    this.filterShops(3)
+                    setTimeout(() => {
+                        this.selectFoodMarket = 23801
+                        this.filterShops(4)
+                    }, 1000)
+                }, 1000)
+            }, 1000)
+
+            // console.log(1111)
+        },
+        viewDetails(item) {
+            location.assign(`/storeDetails?id=${item.id}`)
+        },
         switchIsshow() {
             this.isShow = !this.isShow
             this.elementTagOpacity = this.isShow ? 1 : 0
@@ -242,11 +217,13 @@ export default {
                 level: 1,
                 limit: 100
             })
+
             if (data.code == 200) {
                 this.economize = data.data.listdata
-                console.log(this.economize)
-                this.filterShops(1)
+                this.selecteEconomize = data.data.listdata[0].id
+                this.initSelect()
             }
+
         },
 
 
@@ -255,12 +232,14 @@ export default {
          * @param  isChange  菜市场是否发生改变是否需要重置页面
         */
         filterShops(type, isChange = false) {
+
             switch (type) {
                 case 1:
                     citytree({ pid: this.selecteEconomize }).then((data) => {
                         if (data.code == 200) {
                             this.market = data.data
                             this.selecteMarket = data.data[0].id
+                            // console.log(this.selecteMarket)
                             this.filterShops(2)
                         }
                     })
@@ -641,104 +620,7 @@ export default {
     }
 }
 
-// 页脚样式
-.footer {
-    margin-left: -10px;
-    margin-right: -10px;
-    margin-bottom: -10px;
-    background-color: #1e293b;
-    color: white;
 
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    .footer-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 40px;
-        margin-bottom: 40px;
-    }
-
-    .footer-col {
-        &:nth-child(2) {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            button {
-                background-color: white;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                transition: transform 0.3s;
-
-                &:hover {
-                    transform: scale(1.05);
-                }
-
-                a {
-                    text-decoration: none;
-                    color: #333;
-                    font-weight: 500;
-                }
-            }
-        }
-    }
-
-    .footer-title {
-        font-size: 18px;
-        margin-bottom: 20px;
-        position: relative;
-        padding-bottom: 10px;
-
-
-    }
-
-    .footer-text {
-        color: #ccc;
-        line-height: 1.6;
-    }
-
-    .footer-contacts {
-        list-style: none;
-        padding: 0;
-
-        .footer-contact {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-
-            i {
-                margin-right: 10px;
-                color: #4CAF50;
-                margin-top: 3px;
-            }
-
-            span {
-                color: #ccc;
-            }
-        }
-    }
-
-    .footer-bottom {
-        padding-top: 20px;
-        border-top: 1px solid #444;
-        text-align: center;
-
-        .footer-copyright {
-            color: #aaa;
-            margin: 5px 0;
-            font-size: 14px;
-
-            a {
-                text-decoration: none;
-            }
-        }
-    }
-}
 
 // 响应式调整
 @media (max-width: 768px) {
