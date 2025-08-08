@@ -122,15 +122,10 @@
                 </div>
 
                 <!-- 分页 -->
-                <div class="pagination">
-                    <button class="page-btn prev" @click="getPageData(-1)" :disabled="query.page == 1">
-                        上一页
-                    </button>
+                <paginationVue :currentPage="query.page" :pageSize="query.limit" :totalItems="totalnum"
+                    @page-change="getPageData">
+                </paginationVue>
 
-                    <button class="page-btn next" @click="getPageData(1)" :disabled="shops.length < query.limit">
-                        下一页
-                    </button>
-                </div>
             </div>
         </section>
         <footerVue></footerVue>
@@ -141,9 +136,11 @@
 import { citylist, citytree, marketlist, shopList } from '../apis/shopping'
 import headerVue from '../components/headers.vue'
 import footerVue from '../components/footers.vue'
+import paginationVue from '../components/pagination.vue'
 export default {
     data() {
         return {
+            needLink: true,   // 控制是否多级联动
             selectFoodMarket: null,
             selectCounty: null,
             selecteEconomize: null, // 省
@@ -153,17 +150,20 @@ export default {
             market: [], // 市
             economize: [], // 省级城市
             query: { page: 1, limit: 9, isshow: 1, title: null },
+            totalnum: null,
             // 店铺数据
             shops: [],
             timer: null,
             isShow: false,
             elementTagOpacity: 0,
             isInit: true,
+            keyValue: 500,
         };
     },
     components: {
         headerVue,
-        footerVue
+        footerVue,
+        paginationVue
     },
     async mounted() {
         window.addEventListener('resize', () => {
@@ -175,23 +175,105 @@ export default {
         this.initsSelectArea()
     },
     methods: {
-        async initSelect() {
-            this.selecteEconomize = 2291
-            this.filterShops(1)
-            setTimeout(() => {
-                this.selecteMarket = 2306
-                this.filterShops(2)
-                setTimeout(() => {
-                    this.selectCounty = 2313
-                    this.filterShops(3)
-                    setTimeout(() => {
-                        this.selectFoodMarket = 23801
-                        this.filterShops(4)
-                    }, 1000)
-                }, 1000)
-            }, 1000)
 
-            // console.log(1111)
+        /**
+         * @param type  用于检测是几级发起的请求，
+         * @param  isChange  菜市场是否发生改变是否需要重置页面
+        */
+        filterShops(type, isChange = false, needLink = true) {
+            return new Promise(async (resolve, reject) => {
+                try {
+                    switch (type) {
+                        case 1: // 省级变更
+                            const data1 = await citytree({ pid: this.selecteEconomize });
+                            if (data1.code === 200) {
+                                this.market = data1.data || [];
+                                this.selecteMarket = this.market.length > 0 ? this.market[0].id : null;
+
+                                // 用户手动选择时自动触发下一级，初始化时由initSelect控制
+                                if (needLink && this.market.length > 0) {
+                                    resolve(); // 先标记当前步骤完成
+                                    await this.filterShops(2, false, true); // 继续联动
+                                } else {
+                                    resolve();
+                                }
+                            } else {
+                                reject(new Error("获取市级数据失败"));
+                            }
+                            break;
+
+                        case 2: // 市级变更
+                            const data2 = await citytree({ pid: this.selecteMarket });
+                            if (data2.code === 200) {
+                                this.county = data2.data || [];
+                                this.selectCounty = this.county.length > 0 ? this.county[0].id : null;
+
+                                if (needLink && this.county.length > 0) {
+                                    resolve();
+                                    await this.filterShops(3, false, true);
+                                } else {
+                                    resolve();
+                                }
+                            } else {
+                                reject(new Error("获取县级数据失败"));
+                            }
+                            break;
+
+                        case 3: // 县级变更
+                            const data3 = await marketlist({ area_id: this.selectCounty, limit: 100 });
+                            if (data3.code === 200) {
+                                this.foodMarket = data3.data?.listdata || [];
+                                this.selectFoodMarket = this.foodMarket.length > 0 ? this.foodMarket[0].id : null;
+
+                                if (needLink && this.foodMarket.length > 0) {
+                                    resolve();
+                                    await this.filterShops(4, false, true);
+                                } else {
+                                    resolve();
+                                }
+                            } else {
+                                reject(new Error("获取菜市场数据失败"));
+                            }
+                            break;
+
+                        case 4: // 菜市场变更
+                            if (isChange) {
+                                this.query.page = 1;
+                            }
+                            this.query.market_id = this.selectFoodMarket;
+                            const data4 = await shopList(this.query);
+                            this.shops = data4.data?.listdata || [];
+                            this.totalnum = data4.data.totalnum
+                            // window.scrollTo(0, 100);
+                            resolve();
+                            break;
+
+                        default:
+                            resolve();
+                    }
+                } catch (error) {
+                    reject(error);
+                }
+            });
+        },
+
+        // 初始化选择（关闭自动联动，手动控制流程）
+        async initSelect() {
+            try {
+                this.selecteEconomize = 2291;
+                await this.filterShops(1, false, false); // 最后一个参数关闭联动
+
+                this.selecteMarket = 2306;
+                await this.filterShops(2, false, false);
+
+                this.selectCounty = 2313;
+                await this.filterShops(3, false, false);
+
+                this.selectFoodMarket = 23801;
+                await this.filterShops(4);
+            } catch (error) {
+                console.error("初始化筛选失败：", error);
+            }
         },
         viewDetails(item) {
             location.assign(`/storeDetails?id=${item.id}`)
@@ -208,7 +290,7 @@ export default {
             }, 300)
         },
         getPageData(value) {
-            this.query.page += value
+            this.query.page = value
             this.filterShops(4)
         },
         // 初始化地区
@@ -220,59 +302,75 @@ export default {
 
             if (data.code == 200) {
                 this.economize = data.data.listdata
-                this.selecteEconomize = data.data.listdata[0].id
                 this.initSelect()
             }
 
         },
 
 
-        /**
-         * @param type  用于检测是几级发起的请求，
-         * @param  isChange  菜市场是否发生改变是否需要重置页面
-        */
-        filterShops(type, isChange = false) {
 
-            switch (type) {
-                case 1:
-                    citytree({ pid: this.selecteEconomize }).then((data) => {
-                        if (data.code == 200) {
-                            this.market = data.data
-                            this.selecteMarket = data.data[0].id
-                            // console.log(this.selecteMarket)
-                            this.filterShops(2)
-                        }
-                    })
-                    break
-                case 2:
-                    citytree({ pid: this.selecteMarket }).then((data) => {
-                        if (data.code == 200) {
-                            this.county = data.data
-                            this.selectCounty = data.data[0].id
-                            this.filterShops(3)
-                        }
-                    })
-                    break;
-                case 3:
-                    marketlist({ area_id: this.selectCounty, limit: 100 }).then((data) => {
-                        if (data.code == 200) {
-                            this.foodMarket = data.data.listdata
-                            this.selectFoodMarket = data.data.listdata[0].id
-                        }
-                        this.filterShops(4)
-                    })
-                case 4:
-                    if (isChange) {
-                        this.query.page = 1
-                    }
-                    this.query.market_id = this.selectFoodMarket
-                    shopList(this.query).then((data) => {
-                        this.shops = data.data.listdata
-                        window.scrollTo(0, 100);
-                    })
-                    break
-            }
-        },
+        // filterShops(type, isChange = false) {
+        //     return new Promise(async (resolve, reject) => {
+        //         try {
+        //             switch (type) {
+        //                 case 1:
+        //                     console.log("更新市级数据");
+        //                     const data1 = await citytree({ pid: this.selecteEconomize });
+        //                     if (data1.code === 200) {
+        //                         this.market = data1.data || []; // 确保有默认空数组
+        //                         // 只在有数据时设置，避免报错
+        //                         this.selecteMarket = this.market.length > 0 ? this.market[0].id : null;
+        //                         resolve(); // 只负责当前级别的完成，不主动调用下一级
+        //                     } else {
+        //                         reject(new Error("获取市级数据失败"));
+        //                     }
+        //                     break;
+
+        //                 case 2:
+        //                     console.log("更新县级数据");
+        //                     const data2 = await citytree({ pid: this.selecteMarket });
+        //                     if (data2.code === 200) {
+        //                         this.county = data2.data || [];
+        //                         this.selectCounty = this.county.length > 0 ? this.county[0].id : null;
+        //                         resolve();
+        //                     } else {
+        //                         reject(new Error("获取县级数据失败"));
+        //                     }
+        //                     break;
+
+        //                 case 3:
+        //                     console.log("更新菜市场数据");
+        //                     const data3 = await marketlist({ area_id: this.selectCounty, limit: 100 });
+        //                     if (data3.code === 200) {
+        //                         this.foodMarket = data3.data?.listdata || []; // 可选链处理data可能为null的情况
+        //                         this.selectFoodMarket = this.foodMarket.length > 0 ? this.foodMarket[0].id : null;
+        //                         resolve();
+        //                     } else {
+        //                         reject(new Error("获取菜市场数据失败"));
+        //                     }
+        //                     break;
+
+        //                 case 4:
+        //                     console.log("更新摊主数据");
+        //                     if (isChange) {
+        //                         this.query.page = 1;
+        //                     }
+        //                     this.query.market_id = this.selectFoodMarket;
+        //                     // 等待shopList请求完成后再resolve
+        //                     const data4 = await shopList(this.query);
+        //                     this.shops = data4.data?.listdata || [];
+        //                     window.scrollTo(0, 100);
+        //                     resolve();
+        //                     break;
+
+        //                 default:
+        //                     resolve();
+        //             }
+        //         } catch (error) {
+        //             reject(error); // 捕获所有异步错误并reject
+        //         }
+        //     });
+        // },
 
 
         // 前往店铺详情

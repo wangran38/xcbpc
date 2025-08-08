@@ -445,22 +445,27 @@ const _routes = [
   {
     name: "demo",
     path: "/demo",
-    component: () => import('./demo-CZqJvHuq.mjs')
+    component: () => import('./demo-DKzRKDJW.mjs')
   },
   {
     name: "index",
     path: "/",
-    component: () => import('./index-ZPsco3kQ.mjs')
+    component: () => import('./index-CHaH6QE9.mjs')
   },
   {
     name: "cooperate",
     path: "/cooperate",
-    component: () => import('./cooperate-uOqOLp6i.mjs')
+    component: () => import('./cooperate-D1SYdPKT.mjs')
   },
   {
     name: "shoppingPc",
     path: "/shoppingPc",
-    component: () => import('./shoppingPc-DrECn-qJ.mjs')
+    component: () => import('./shoppingPc-D2yFxn6C.mjs')
+  },
+  {
+    name: "storeDetails",
+    path: "/storeDetails",
+    component: () => import('./storeDetails-CXPQS7tR.mjs')
   },
   {
     name: "cooperationAgreement",

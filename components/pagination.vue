@@ -251,15 +251,12 @@ export default {
     }
 
     &#active {
-        background-color: #4f46e5;
-        border-color: #4f46e5;
+        background-color: #4CAF50;
+        border-color: #4CAF50;
         color: #ffffff;
         font-weight: 500;
 
-        &:hover {
-            background-color: #4338ca;
-            border-color: #4338ca;
-        }
+
     }
 }
 
@@ -293,24 +290,22 @@ export default {
 
         &:focus {
             outline: none;
-            border-color: #4f46e5;
+            border-color: #4CAF50;
             box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
         }
     }
 
     .jump-btn {
         padding: 6px 12px;
-        background-color: #4f46e5;
-        border: 1px solid #4f46e5;
+        background-color: #4CAF50;
+        border: 1px solid #4CAF50;
         border-radius: 4px;
         color: #ffffff;
         font-size: 14px;
         cursor: pointer;
         transition: background-color 0.2s ease;
 
-        &:hover {
-            background-color: #4338ca;
-        }
+
     }
 }
 

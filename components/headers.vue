@@ -149,8 +149,8 @@ watch(isMenuOpen, (newVal) => {
 /* 桌面端导航 */
 .desktop-nav {
     display: none;
-    flex: 1 1 auto;
-    margin-left: 40px;
+    /* flex: 1 1 auto; */
+    margin-right: 40px;
 }
 
 .nav-list {

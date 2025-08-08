@@ -1,9 +1,9 @@
 <template>
     <div class="min-h-screen bg-gray-50">
+        <headerVue></headerVue>
         <section id="agent-form" class="section py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4">
                 <div class="grid md:grid-cols-12 gap-8">
-                    <!-- 左侧介绍区域 -->
                     <div class="md:col-span-5 order-2 md:order-1">
                         <div
                             class="bg-white rounded-2xl shadow-card p-8 md:p-10 transform transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1">
@@ -274,11 +274,14 @@
                 </div>
             </div>
         </section>
+        <footerVue></footerVue>
     </div>
 </template>
 
 <script setup>
 import { ref, reactive } from 'vue'
+import headerVue from '../components/headers.vue'
+import footerVue from '../components/footers.vue'
 
 const formData = ref({
     companyName: '',
@@ -390,7 +393,6 @@ const submitForm = () => {
 </script>
 
 <style>
-/* 基础样式定义 */
 :root {
     --primary-500: #6366F1;
     --primary-600: #4F46E5;
@@ -405,12 +407,6 @@ const submitForm = () => {
     --shadow-card-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* 全局样式 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;

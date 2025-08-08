@@ -1,5 +1,6 @@
 <template>
     <div class="shop-detail-page">
+        <headerVue></headerVue>
         <section class="shop-header">
 
             <div class="shop-base-info">
@@ -124,9 +125,9 @@
                 <div class="detail-section">
                     <h2 class="section-title">配送信息</h2>
                     <div class="delivery-info">
-                        <p>配送范围：{{ shopInfo.deliveryRange }}</p>
-                        <p>配送费：{{ shopInfo.deliveryFee === 0 ? '免费' : '¥' + shopInfo.deliveryFee }}</p>
-                        <p>起送价：¥{{ shopInfo.minOrderAmount }}</p>
+                        <p>配送范围：{{ '5kg' }}</p>
+                        <p>配送费：{{ '免费' }}</p>
+                        <p>起送价：¥{{ 50 }}</p>
                     </div>
                 </div>
 
@@ -469,7 +470,7 @@ export default {
 
 // 店铺头部
 .shop-header {
-    margin-top: 100px;
+    margin-top: 150px;
 
     .shop-banner {
         position: relative;
