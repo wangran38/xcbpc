@@ -31,8 +31,7 @@
           <div class="introduceItem" style="margin: 10px;">
             <div style="font-weight: bold; font-size: 20px;">公司简介:</div>
             <div>
-              <p style="text-indent: 20px;">集积分运营、电子商务、应用软件技术于一体的复合型公司
-                海南积分宝电子商务有限公司,
+              <p style="text-indent: 20px;">海南积分宝电子商务有限公司,
                 于2011年3月30日在海口成立，注册资金1000万人民币，是一家集积分运营、电子商务、应用软件技术于一体的复合型公司，致力于<a href="#">消费养老</a>、<a
                   href="#">企业咨询管理</a>、<a href="#">文化传播推广与运营</a>等。
               </p>
@@ -40,7 +39,7 @@
           </div>
 
 
-          <div class="introduceItem">
+          <!-- <div class="introduceItem">
             <div style="font-weight: bold; font-size: 20px;">企业价值观:</div>
             <div>
               <p style="text-indent: 20px;">
@@ -75,7 +74,7 @@
                 今天的事不推到明天，上班时间只做与工作有关的事情遵循必要的工作流程，没有因工作失职而造成的重复错误先承担自己的责任，再追究其他人的责任将责任细化到每一个工作环节中，不断质疑和改进工作，并对自己工作的结果负责完成个人和团队责任目标
               </p>
             </div>
-          </div>
+          </div> -->
 
         </div>
       </div>

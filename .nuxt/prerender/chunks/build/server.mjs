@@ -450,22 +450,22 @@ const _routes = [
   {
     name: "index",
     path: "/",
-    component: () => import('./index-CHaH6QE9.mjs')
+    component: () => import('./index-TV-lmIEC.mjs')
   },
   {
     name: "cooperate",
     path: "/cooperate",
-    component: () => import('./cooperate-D1SYdPKT.mjs')
+    component: () => import('./cooperate-CQKjh5Le.mjs')
   },
   {
     name: "shoppingPc",
     path: "/shoppingPc",
-    component: () => import('./shoppingPc-D2yFxn6C.mjs')
+    component: () => import('./shoppingPc-BqGptv2t.mjs')
   },
   {
     name: "storeDetails",
     path: "/storeDetails",
-    component: () => import('./storeDetails-CXPQS7tR.mjs')
+    component: () => import('./storeDetails-HalN-Rsk.mjs')
   },
   {
     name: "cooperationAgreement",

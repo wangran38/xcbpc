@@ -1,5 +1,6 @@
 import axios from "axios";
 import {getToken,removeToken} from '../uitls/storage'
+// import { error } from "echarts/types/src/util/log.js";
 const instance = axios.create({
     baseURL: 'https://api.xcbdsc.com',
     timeout: 5000}
@@ -23,6 +24,8 @@ instance.interceptors.request.use(async (config) => {
 
 instance.interceptors.response.use(({data}) => {
     return data
+}, error => {
+    return Promise.reject(error)
 })
 
 const request = (url, method, data) => {

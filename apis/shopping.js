@@ -35,3 +35,8 @@ export const getShopGoods = (data) => {
 export const getShopComments = (data) => {
     return request('api/shop/list', 'POST', data)
 }
+
+// 代理入驻申请
+export const agentApply = (data) => {
+    return request('/api/agentuser/add', 'POST', data)
+}

@@ -2,6 +2,7 @@
     <header class="site-header">
         <div class="header-container">
             <div class="header-logo">
+                <img src="./../static/logo.png" style="width: 50px; height: 50px; margin-right: 10px;"></img>
                 <a href="/" class="logo-link">
                     <span class="logo-text">海南积分宝电子商务有限公司</span>
                 </a>
@@ -130,6 +131,8 @@ watch(isMenuOpen, (newVal) => {
 
 /* Logo样式 */
 .header-logo {
+    align-items: center;
+    display: flex;
     flex: 0 0 auto;
 }
 

@@ -98,24 +98,20 @@
                     <div class="md:col-span-7 order-1 md:order-2">
                         <div
                             class="bg-white rounded-2xl shadow-card p-8 md:p-10 transform transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1">
-                            <form @submit.prevent="submitForm">
+                            <form>
                                 <h3 class="text-2xl font-bold mb-6 text-gray-800">填写申请信息</h3>
 
                                 <div class="grid md:grid-cols-2 gap-6">
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="company-name" class="block text-sm font-medium text-gray-700 mb-1">
                                             公司名称 <span class="text-red-500">*</span>
                                         </label>
                                         <div class="relative">
-                                            <!-- <div
-                                                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                                <i class="fa fa-building text-gray-400"></i>
-                                            </div> -->
                                             <input type="text" id="company-name" v-model="formData.companyName"
                                                 class="form-control pl-0 focus:pl-10 transition-all"
                                                 placeholder="请输入公司名称" required>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-group">
                                         <label for="contact-person"
@@ -123,7 +119,7 @@
                                             联系人姓名 <span class="text-red-500">*</span>
                                         </label>
                                         <div class="relative">
-                                            <input type="text" id="contact-person" v-model="formData.contactPerson"
+                                            <input type="text" id="contact-person" v-model="formData.nickname"
                                                 class="form-control pl-0 focus:pl-10 transition-all"
                                                 placeholder="请输入联系人姓名" required>
                                         </div>
@@ -152,6 +148,25 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="agent-type" class="block text-sm font-medium text-gray-700 mb-1">
+                                            代理类型 <span class="text-red-500">*</span>
+                                        </label>
+                                        <div class="relative">
+                                            <select id="agent-type" v-model="formData.agentType"
+                                                class="form-control pl-0 focus:pl-10 transition-all appearance-none pr-10 bg-white"
+                                                required>
+                                                <option value="">请选择代理类型</option>
+                                                <option value="1">省级代理</option>
+                                                <option value="2">市级代理</option>
+                                            </select>
+                                            <div
+                                                class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                                <i class="fa fa-chevron-down text-gray-400"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="province" class="block text-sm font-medium text-gray-700 mb-1">
                                             所在省份 <span class="text-red-500">*</span>
                                         </label>
@@ -160,11 +175,8 @@
                                                 class="form-control pl-0 focus:pl-10 transition-all appearance-none pr-10 bg-white"
                                                 required>
                                                 <option value="">请选择省份</option>
-                                                <option value="北京">北京</option>
-                                                <option value="上海">上海</option>
-                                                <option value="广东">广东</option>
-                                                <option value="浙江">浙江</option>
-                                                <option value="江苏">江苏</option>
+                                                <option v-for="item in provinceData" :value="item.id">{{ item.name }}
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -178,12 +190,16 @@
                                                 class="form-control pl-0 focus:pl-10 transition-all appearance-none pr-10 bg-white"
                                                 required>
                                                 <option value="">请选择城市</option>
-                                                <option v-if="formData.province === '北京'" value="北京">北京</option>
+
+                                                <option v-for="item in cityData" :value="item.id">{{ item.name }}
+                                                </option>
+
+                                                <!-- <option v-if="formData.province === '北京'" value="北京">北京</option>
                                                 <option v-if="formData.province === '上海'" value="上海">上海</option>
                                                 <option v-if="formData.province === '广东'" value="广州">广州</option>
                                                 <option v-if="formData.province === '广东'" value="深圳">深圳</option>
                                                 <option v-if="formData.province === '浙江'" value="杭州">杭州</option>
-                                                <option v-if="formData.province === '浙江'" value="宁波">宁波</option>
+                                                <option v-if="formData.province === '浙江'" value="宁波">宁波</option> -->
                                             </select>
                                             <div
                                                 class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
@@ -192,28 +208,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="agent-type" class="block text-sm font-medium text-gray-700 mb-1">
-                                            代理类型 <span class="text-red-500">*</span>
-                                        </label>
-                                        <div class="relative">
-                                            <select id="agent-type" v-model="formData.agentType"
-                                                class="form-control pl-0 focus:pl-10 transition-all appearance-none pr-10 bg-white"
-                                                required>
-                                                <option value="">请选择代理类型</option>
-                                                <option value="省级代理">省级代理</option>
-                                                <option value="市级代理">市级代理</option>
-                                                <option value="县级代理">县级代理</option>
-                                                <option value="区域代理">区域代理</option>
-                                            </select>
-                                            <div
-                                                class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                                <i class="fa fa-chevron-down text-gray-400"></i>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="form-group">
+
+                                    <!-- <div class="form-group">
                                         <label for="investment" class="block text-sm font-medium text-gray-700 mb-1">
                                             意向投资规模 <span class="text-red-500">*</span>
                                         </label>
@@ -233,7 +230,7 @@
                                                 <i class="fa fa-chevron-down text-gray-400"></i>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-group md:col-span-2">
                                         <div style="display: flex; align-items: center;">
@@ -258,10 +255,9 @@
                                 </div>
 
                                 <div class="form-actions mt-8">
-                                    <button type="submit" class="btn btn-primary px-8 py-3 text-lg">
+                                    <button class="btn btn-primary px-8 py-3 text-lg" @click.prevent="submitForm">
                                         提交申请
                                     </button>
-
                                 </div>
                                 <button class="btn btn-primary px-8 py-3 text-lg"
                                     style="margin-top: 10px; background-color: gray;">
@@ -274,125 +270,233 @@
                 </div>
             </div>
         </section>
+        <div class="submit-loading-mask" v-if="modalBox">
+            <div v-if="modalBox">
+                <div class="loading-text">提交中，请稍候，提交完成自动关闭弹窗...</div>
+                <div class="loading-desc">此过程约1-2秒,请勿关闭页面</div>
+            </div>
+
+            <!-- <div style="font-size: 18px;padding: 15px;background-color: #67c23a; color: white; border-radius: 5%;">
+                提交成功
+            </div> -->
+        </div>
         <footerVue></footerVue>
     </div>
 </template>
 
-<script setup>
-import { ref, reactive } from 'vue'
+<script>
 import headerVue from '../components/headers.vue'
 import footerVue from '../components/footers.vue'
+import { citylist, citytree, agentApply } from '../apis/shopping'
+export default {
+    components: {
+        headerVue,
+        footerVue
+    },
+    data() {
+        return {
+            modalBox: false,
+            submitStatus: false,
+            provinceData: [],
+            cityData: [],
+            formData: {
 
-const formData = ref({
-    companyName: '',
-    contactPerson: '',
-    phone: '',
-    email: '',
-    province: '',
-    city: '',
-    agentType: '',
-    investment: '',
-    agreement: false
-})
+                nickname: '',
+                phone: '',
+                email: '',
+                province: '', // 用户代理的省份id
+                city: '', //  用户代理市县id
+                remark: '',
+                agentType: ''
 
-const errors = reactive({
-    companyName: '',
-    contactPerson: '',
-    phone: '',
-    email: '',
-    province: '',
-    city: '',
-    agentType: '',
-    investment: '',
-    agreement: ''
-})
 
-// 添加表单提交处理函数
-const submitForm = () => {
-    // 重置错误信息
-    Object.keys(errors).forEach(key => {
-        errors[key] = '';
-    });
+                // companyName: '',
+                // contactPerson: '',
+                // phone: '',
+                // email: '',
+                // province: '',
+                // city: '',
+                // agentType: '',
+                // investment: '',
+                // agreement: false
+            },
+            errors: {
+                companyName: '',
+                contactPerson: '',
+                phone: '',
+                email: '',
+                province: '',
+                city: '',
+                agentType: '',
+                investment: '',
+                agreement: ''
+            }
+        }
+    },
+    mounted() {
+        this.initRegion()
+    },
+    watch: {
+        'formData.province'(newValue, oldValue) {
+            this.getCityData(newValue)
+        }
+    },
+    methods: {
+        // 获取城市数据
+        async getCityData(pid) {
+            // 校验pid有效性，避免无效请求
+            if (!pid) {
+                console.warn('缺少省份ID,无法获取城市数据');
+                return;
+            }
 
-    let isValid = true;
+            // this.regionIndex[1] = 0
+            this.cityMapData = [];
+            // this.regionRange.splice(1, 1, []);
+            try {
+                const data = await citytree({ 'pid': pid });
+                if (data.code === 200 && Array.isArray(data.data)) {
+                    // 批量处理数据，减少响应式更新次数
+                    const cityIds = [];
+                    data.data.forEach(item => {
+                        cityIds.push(item);
+                    });
+                    // 一次性赋值，提升性能并确保响应式
+                    this.cityData = cityIds;
+                } else {
+                    console.warn('城市数据返回格式异常', data);
+                }
+            } catch (error) {
+                console.error('获取城市数据失败', error);
+            } finally {
+                this.$nextTick(() => {
+                    this.$forceUpdate();
+                });
+            }
+        },
 
-    // 验证公司名称
-    if (!formData.value.companyName.trim()) {
-        errors.companyName = '请输入公司名称';
-        isValid = false;
+        // 初始化地区
+        async initRegion() {
+            let data = await citylist({
+                "level": 1,
+                "limit": 100
+            })
+            if (data.code == 200) {
+                data.data.listdata.forEach(item => {
+                    this.provinceData.push(item)
+                })
+            }
+            this.getCityData(this.provinceData[0].id)
+        },
+        async submitForm() {
+
+            let isValid = true
+            // 验证联系人姓名
+            if (!this.formData.nickname.trim()) {
+                this.errors.contactPerson = '请输入联系人姓名';
+                isValid = false;
+            }
+
+            // 验证电话号码
+            const phoneRegex = /^1[3-9]\d{9}$/;
+            if (!phoneRegex.test(this.formData.phone)) {
+                this.errors.phone = '请输入有效的手机号码';
+                isValid = false;
+            }
+
+            // 验证电子邮箱
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(this.formData.email)) {
+                this.errors.email = '请输入有效的电子邮箱';
+                isValid = false;
+            }
+
+            // 验证省份
+            if (!this.formData.province) {
+                this.errors.province = '请选择省份';
+                isValid = false;
+            }
+
+            // 验证城市
+            if (!this.formData.city) {
+                this.errors.city = '请选择城市';
+                isValid = false;
+            }
+
+            // 验证代理类型
+            if (!this.formData.agentType) {
+                this.errors.agentType = '请选择代理类型';
+                isValid = false;
+            }
+
+
+            // 验证协议勾选
+            if (!this.formData.agreement) {
+                this.errors.agreement = '请阅读并同意相关协议';
+                isValid = false;
+            }
+
+
+
+
+            // 如果验证通过，可以提交表单
+            if (isValid) {
+                // this.modalBox = true
+                try {
+                    let data = await agentApply(this.formData)
+                    if (data.code == 200) {
+                        alert('提交成功')
+                    }
+                } catch {
+                    // setTimeout(() => {
+                    //     this.modalBox = false
+                    // }, 2000)
+                }
+
+                this.formData = {
+                    nickname: '',
+                    phone: '',
+                    email: '',
+                    province: '',
+                    city: '',
+                    remark: ''
+                };
+            }
+        }
     }
-
-    // 验证联系人姓名
-    if (!formData.value.contactPerson.trim()) {
-        errors.contactPerson = '请输入联系人姓名';
-        isValid = false;
-    }
-
-    // 验证电话号码
-    const phoneRegex = /^1[3-9]\d{9}$/;
-    if (!phoneRegex.test(formData.value.phone)) {
-        errors.phone = '请输入有效的手机号码';
-        isValid = false;
-    }
-
-    // 验证电子邮箱
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.value.email)) {
-        errors.email = '请输入有效的电子邮箱';
-        isValid = false;
-    }
-
-    // 验证省份
-    if (!formData.value.province) {
-        errors.province = '请选择省份';
-        isValid = false;
-    }
-
-    // 验证城市
-    if (!formData.value.city) {
-        errors.city = '请选择城市';
-        isValid = false;
-    }
-
-    // 验证代理类型
-    if (!formData.value.agentType) {
-        errors.agentType = '请选择代理类型';
-        isValid = false;
-    }
-
-    // 验证投资规模
-    if (!formData.value.investment) {
-        errors.investment = '请选择投资规模';
-        isValid = false;
-    }
-
-    // 验证协议勾选
-    if (!formData.value.agreement) {
-        errors.agreement = '请阅读并同意相关协议';
-        isValid = false;
-    }
-
-    // 如果验证通过，可以提交表单
-    if (isValid) {
-        // 这里可以添加实际提交逻辑，例如API调用
-        alert('申请已提交成功，我们会尽快与您联系！');
-        // 重置表单
-        formData.value = {
-            companyName: '',
-            contactPerson: '',
-            phone: '',
-            email: '',
-            province: '',
-            city: '',
-            agentType: '',
-            investment: '',
-            agreement: false
-        };
-    }
-};
+}
 </script>
-
 <style>
+.submit-loading-mask {
+    user-select: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 加载提示文字 */
+.loading-text {
+    text-align: center;
+    font-size: 22px;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+/* 加载辅助说明：浅色调降低焦虑 */
+.loading-desc {
+    text-align: center;
+    font-size: 20px;
+    color: #999;
+}
+
 :root {
     --primary-500: #6366F1;
     --primary-600: #4F46E5;

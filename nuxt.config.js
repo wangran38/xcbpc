@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     head: {
       // <link href="https://g.csdnimg.cn/static/logo/favicon32.ico" rel="shortcut icon" type="image/x-icon">
      link: [
-      { rel: 'icon', type: 'image/x-icon', href: 'static/logo.png' }
+      { rel: 'icon', href: 'favicon.ico',type:"image/x-icon" }
     ],
       viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
       title: '海南积分宝电子商务有限公司',

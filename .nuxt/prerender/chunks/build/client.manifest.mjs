@@ -1,62 +1,71 @@
 const client_manifest = {
-  "_BdX4AgLD.js": {
+  "_3EPULsr-.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "BdX4AgLD.js",
-    "name": "footers",
-    "imports": [
-      "node_modules/nuxt/dist/app/entry.js"
-    ],
-    "css": [
-      "footers.DdwXV_M8.css"
-    ]
-  },
-  "footers.DdwXV_M8.css": {
-    "file": "footers.DdwXV_M8.css",
-    "resourceType": "style",
-    "prefetch": true,
-    "preload": true
-  },
-  "_CDJ-GHdt.js": {
-    "resourceType": "script",
-    "module": true,
-    "prefetch": true,
-    "preload": true,
-    "file": "CDJ-GHdt.js",
+    "file": "3EPULsr-.js",
     "name": "shopping"
   },
-  "_DC0cwJHN.js": {
+  "_DHgCLG_W.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DC0cwJHN.js",
+    "file": "DHgCLG_W.js",
     "name": "v3",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js"
     ]
   },
-  "_footers.DdwXV_M8.css": {
+  "_footers.ihx4Cufc.css": {
     "resourceType": "style",
     "prefetch": true,
     "preload": true,
-    "file": "footers.DdwXV_M8.css",
-    "src": "_footers.DdwXV_M8.css"
+    "file": "footers.ihx4Cufc.css",
+    "src": "_footers.ihx4Cufc.css"
+  },
+  "_tMw0Kily.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "tMw0Kily.js",
+    "name": "footers",
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.js"
+    ],
+    "css": [
+      "footers.ihx4Cufc.css"
+    ],
+    "assets": [
+      "logo.C_IHF1GT.png"
+    ]
+  },
+  "footers.ihx4Cufc.css": {
+    "file": "footers.ihx4Cufc.css",
+    "resourceType": "style",
+    "prefetch": true,
+    "preload": true
+  },
+  "logo.C_IHF1GT.png": {
+    "file": "logo.C_IHF1GT.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
   },
   "node_modules/nuxt/dist/app/components/error-404.vue": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "CXdCFjzS.js",
+    "file": "Btekb6pe.js",
     "name": "error-404",
     "src": "node_modules/nuxt/dist/app/components/error-404.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_DC0cwJHN.js"
+      "_DHgCLG_W.js"
     ],
     "css": []
   },
@@ -71,13 +80,13 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DiaOI4xQ.js",
+    "file": "CxfO8LMN.js",
     "name": "error-500",
     "src": "node_modules/nuxt/dist/app/components/error-500.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_DC0cwJHN.js"
+      "_DHgCLG_W.js"
     ],
     "css": []
   },
@@ -92,7 +101,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "CV6jS8MB.js",
+    "file": "BZWdRYFE.js",
     "name": "entry",
     "src": "node_modules/nuxt/dist/app/entry.js",
     "isEntry": true,
@@ -106,7 +115,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DfPkV6qR.js",
+    "file": "Hz2xl61e.js",
     "name": "index",
     "src": "node_modules/vue-echarts/dist/index.js",
     "isDynamicEntry": true,
@@ -119,18 +128,19 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "CPw_mynC.js",
+    "file": "Dg9V8lsK.js",
     "name": "cooperate",
     "src": "pages/cooperate.vue",
     "isDynamicEntry": true,
     "imports": [
-      "node_modules/nuxt/dist/app/entry.js",
-      "_BdX4AgLD.js"
+      "_tMw0Kily.js",
+      "_3EPULsr-.js",
+      "node_modules/nuxt/dist/app/entry.js"
     ],
     "css": []
   },
-  "cooperate.CXme_KUT.css": {
-    "file": "cooperate.CXme_KUT.css",
+  "cooperate.Dgc15ZxN.css": {
+    "file": "cooperate.Dgc15ZxN.css",
     "resourceType": "style",
     "prefetch": true,
     "preload": true
@@ -140,7 +150,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "u-EgZoot.js",
+    "file": "Brx3jkoi.js",
     "name": "cooperationAgreement",
     "src": "pages/cooperationAgreement.vue",
     "isDynamicEntry": true,
@@ -160,7 +170,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "GwnAEbFQ.js",
+    "file": "BzFikmEc.js",
     "name": "demo",
     "src": "pages/demo.vue",
     "isDynamicEntry": true,
@@ -180,13 +190,13 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DpEbFCXg.js",
+    "file": "Culbt0px.js",
     "name": "index",
     "src": "pages/index.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_BdX4AgLD.js"
+      "_tMw0Kily.js"
     ],
     "dynamicImports": [
       "node_modules/vue-echarts/dist/index.js"
@@ -207,8 +217,8 @@ const client_manifest = {
       "zengzhi.ChF9e4GV.png"
     ]
   },
-  "index.CJSsHqxW.css": {
-    "file": "index.CJSsHqxW.css",
+  "index.CsDa7QoG.css": {
+    "file": "index.CsDa7QoG.css",
     "resourceType": "style",
     "prefetch": true,
     "preload": true
@@ -290,13 +300,13 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "B0jKZbVp.js",
+    "file": "BAskLPsk.js",
     "name": "shoppingPc",
     "src": "pages/shoppingPc.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_CDJ-GHdt.js",
-      "_BdX4AgLD.js",
+      "_3EPULsr-.js",
+      "_tMw0Kily.js",
       "node_modules/nuxt/dist/app/entry.js"
     ],
     "css": []
@@ -312,14 +322,14 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "Ba56ru-Y.js",
+    "file": "DDlUd7Z7.js",
     "name": "storeDetails",
     "src": "pages/storeDetails.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_CDJ-GHdt.js",
-      "_BdX4AgLD.js"
+      "_3EPULsr-.js",
+      "_tMw0Kily.js"
     ],
     "css": []
   },
@@ -356,6 +366,13 @@ const client_manifest = {
     "mimeType": "image/png",
     "file": "four.Bq-hA6pl.png",
     "src": "static/four.png"
+  },
+  "static/logo.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "logo.C_IHF1GT.png",
+    "src": "static/logo.png"
   },
   "static/one.png": {
     "resourceType": "image",
