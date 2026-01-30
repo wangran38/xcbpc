@@ -450,22 +450,27 @@ const _routes = [
   {
     name: "index",
     path: "/",
-    component: () => import('./index-TV-lmIEC.mjs')
+    component: () => import('./index-DtGarI3S.mjs')
   },
   {
     name: "cooperate",
     path: "/cooperate",
-    component: () => import('./cooperate-CQKjh5Le.mjs')
+    component: () => import('./cooperate-B__Omt-l.mjs')
   },
   {
     name: "shoppingPc",
     path: "/shoppingPc",
-    component: () => import('./shoppingPc-BqGptv2t.mjs')
+    component: () => import('./shoppingPc-CUv9qHIG.mjs')
   },
   {
     name: "storeDetails",
     path: "/storeDetails",
-    component: () => import('./storeDetails-HalN-Rsk.mjs')
+    component: () => import('./storeDetails-CvfTW9OF.mjs')
+  },
+  {
+    name: "certificateWall",
+    path: "/certificateWall",
+    component: () => import('./certificateWall-Bp3cKgUE.mjs')
   },
   {
     name: "cooperationAgreement",

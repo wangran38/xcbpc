@@ -15,3 +15,8 @@
     scrollbar-width: none;
     /* 隐藏滚动条 */
 }
+
+*{
+    margin: 0;
+    padding: 0;
+}

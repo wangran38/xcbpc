@@ -42,7 +42,7 @@ import { ref, watch, onMounted, onUnmounted } from 'vue';
 
 // 导航菜单数据
 const navItems = [
-    { id: 1, label: '项目背景', url: '/#about', target: '_self' },
+    { id: 1, label: '荣誉资质', url: '/certificateWall', target: '_self' },
     { id: 2, label: '核心功能', url: '/#services', target: '_self' },
     { id: 3, label: '投资优势', url: '/#advantage', target: '_self' },
     { id: 4, label: '应用场景', url: '/#scene', target: '_self' },

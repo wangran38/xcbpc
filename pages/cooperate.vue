@@ -261,7 +261,7 @@
                                 </div>
                                 <button class="btn btn-primary px-8 py-3 text-lg"
                                     style="margin-top: 10px; background-color: gray;">
-                                    <a href=" http://xcbdsc.com/xcbdsc1.apk" download
+                                    <a href=" http://xcbdsc.com/xcbdsc.apk" download
                                         style="text-decoration: none; color: white;">点击下载代理商app</a>
                                 </button>
                             </form>
